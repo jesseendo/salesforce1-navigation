@@ -1,0 +1,18 @@
+<apex:page docType="html-5.0" standardController="Case" extensions="CaseRedirectExtension">
+
+	<script>
+		function doRedirect() {
+			var shouldRedirect = window.confirm('Redirect to standard page?');
+
+			if(shouldRedirect == true)
+			{
+				sforce.one.editRecord('{!mysObject.Id}');
+			} else {
+				sforce.one.navigateToURL('/{!mysObject.Id}/e?nooverride=1');
+			}
+		}
+	</script>
+
+	<button type="button" onclick="doRedirect()">Redirect</button>
+
+</apex:page>
